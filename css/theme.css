@@ -226,8 +226,8 @@ a.cta-dark small img,a.cta-block small img,a.btn small img{display:inline-block 
 /* ---------- BSB additions ---------- */
 .nav-logo{display:inline-flex;align-items:center;gap:10px;filter:none !important;}
 .nav-logo img{display:block;height:auto;}
-.nav-logo .logo-icon{width:30px;height:30px;}
-.nav-logo .logo-word{height:20px;width:auto;}
+.nav-logo .logo-full{height:52px;width:auto;}
+.nav-inner{height:66px !important;}
 .nav-logo em{display:none;}
 .event-pills img{width:22px;height:22px;object-fit:contain;}
 .case-card{background:var(--epx-panel) !important;border:1px solid var(--epx-line) !important;border-radius:16px;padding:12px;margin:0;display:flex;flex-direction:column;gap:10px;text-align:left;}
@@ -243,8 +243,8 @@ a.cta-dark small img,a.cta-block small img,a.btn small img{display:inline-block 
 .lead-form select{width:100%;}
 .video-note{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:12px;color:#fff !important;opacity:.85;}
 @media(max-width:640px){
-  .nav-logo .logo-word{height:16px;}
-  .nav-logo .logo-icon{width:26px;height:26px;}
+  .nav-logo .logo-full{height:44px;}
+  .nav-inner{height:60px !important;}
 }
 .stat-card strong{white-space:nowrap;font-size:clamp(22px,4.4vw,34px) !important;}
 @media(max-width:767px){
@@ -257,3 +257,11 @@ a.cta-dark small img,a.cta-block small img,a.btn small img{display:inline-block 
   .case-card .case-tag{font-size:10px;padding:1px 8px;}
 }
 .wc-rating .wc-exc{display:block;text-align:center;font-size:12.5px;}
+
+/* presenter (award photo is landscape, so it is shown as a rounded rectangle rather than a circle) */
+.wc-banner .wc-coach-img.presenter-photo{width:210px !important;height:140px !important;border-radius:14px !important;border:1px solid var(--epx-line) !important;object-fit:cover;object-position:center;align-self:center;}
+.wc-cred{font-size:12.5px !important;line-height:1.5;color:var(--epx-muted) !important;margin-top:4px;max-width:340px;}
+@media(max-width:640px){
+  .wc-banner .wc-coach-img.presenter-photo{width:100% !important;height:auto !important;aspect-ratio:3/2;margin:14px 0 0 0 !important;}
+}
+.footer-logo{display:block;width:150px;max-width:60%;height:auto;margin:0 auto 14px;}
