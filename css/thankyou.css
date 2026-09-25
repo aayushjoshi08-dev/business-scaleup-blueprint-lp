@@ -1,0 +1,50 @@
+/* Thank-you page additions (uses the tokens from theme.css) */
+.ty-nav{justify-content:center !important;}
+.ty-hero{padding-top:36px !important;padding-bottom:6px !important;}
+.ty-icon{display:block;width:108px;height:108px;object-fit:contain;margin:0 auto 10px;filter:drop-shadow(0 12px 24px rgba(0,0,0,.45));}
+.ty-section{padding-top:10px !important;}
+
+.ty-card{background:var(--epx-panel) !important;border:1px solid var(--epx-line) !important;border-radius:22px;padding:28px;margin:0 auto 22px;text-align:left;}
+.ty-card h2{font-size:22px;margin:0 0 16px;}
+.ty-card h3{font-size:18px;margin:0 0 4px;}
+.ty-card p{color:var(--epx-soft);}
+.ty-card .eyebrow{text-align:center;display:block;margin-bottom:6px;}
+
+.ty-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.lead-form textarea{
+  width:100%;border:1.5px solid var(--epx-line);border-radius:12px;background:var(--epx-panel2);
+  color:var(--epx-text);font:inherit;font-weight:600;padding:13px 14px;outline:0;resize:vertical;
+}
+.lead-form select option{background:#0E1642;color:#EAF0FF;}
+.lead-form textarea:focus,.lead-form select:focus{
+  border-color:var(--epx-cyan) !important;box-shadow:0 0 0 3px rgba(251,191,36,.15);outline:none;
+}
+.lead-form textarea::placeholder{color:#5F6E8C;}
+.lead-form label > span{color:var(--epx-text);}
+.lead-submit[disabled]{opacity:.75;}
+
+.ty-wa{display:flex;align-items:center;gap:18px;border-color:rgba(37,211,102,.35) !important;transition:box-shadow .3s,border-color .3s;}
+.ty-wa.is-active{box-shadow:0 0 0 2px #25D366;}
+.ty-wa-icon{flex:none;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;}
+.ty-wa-copy{flex:1;min-width:0;}
+.ty-wa-copy p{margin:0;font-size:14px;}
+.ty-wa-note{margin-top:6px !important;font-size:12.5px !important;color:var(--epx-gold) !important;}
+.ty-wa .btn-dark{flex:none;white-space:nowrap;}
+
+.ty-date{text-align:center !important;}
+.ty-date h2{margin-bottom:14px;}
+.ty-date .event-pills{margin-bottom:14px;}
+.ty-date-note{font-size:14.5px;max-width:480px;margin:0 auto 18px;}
+.ty-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+.ty-actions a{display:inline-flex;align-items:center;justify-content:center;padding:13px 24px;text-align:center;}
+
+footer{text-align:center;}
+
+@media(max-width:640px){
+  .ty-card{padding:20px;}
+  .ty-grid{grid-template-columns:1fr;}
+  .ty-wa{flex-direction:column;text-align:center;}
+  .ty-wa .btn-dark{width:100%;}
+  .ty-actions a{width:100%;}
+  .ty-icon{width:92px;height:92px;}
+}

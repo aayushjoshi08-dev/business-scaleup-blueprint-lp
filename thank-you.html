@@ -1,283 +1,145 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Registration Pending — Business ScaleUp Blueprint</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          surface: '#131B4D',
-          'surface-container-high': '#1C2456',
-          'surface-container-highest': '#242C60',
-          'on-surface': '#F1F2FA',
-          secondary: '#A6ADCE',
-          'primary-container': '#3A2A00',
-          'on-primary': '#FDE68A',
-          error: '#F87171'
-        }
-      }
-    }
-  }
-</script>
-<style>
-  * { box-sizing: border-box; }
-  body { -webkit-font-smoothing: antialiased; }
-  .cta-fire {
-    background-image: linear-gradient(180deg, #FDE047 0%, #FBBF24 35%, #F59E0B 65%, #EA8C0E 100%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -3px 6px rgba(120,53,15,0.35), 0 6px 18px rgba(245,158,11,0.35);
-    background-position: 0% 0%;
-    background-size: 100% 200%;
-    transition: background-position 0.35s ease, transform 0.15s ease;
-  }
-  .cta-fire:hover { background-position: 0% 100%; }
-  .icon-pulse-ring { position: relative; }
-  .icon-pulse-ring::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 9999px;
-    border: 2px solid #EAB308;
-    animation: pulseRing 2.4s cubic-bezier(0.4,0,0.6,1) infinite;
-  }
-  @keyframes pulseRing {
-    0% { transform: scale(1); opacity: 0.7; }
-    100% { transform: scale(1.9); opacity: 0; }
-  }
-  select.form-select {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A6ADCE' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 0.9rem center;
-    background-size: 1.1rem;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-  input::placeholder, textarea::placeholder { color: #6B7299; }
-  @media (prefers-reduced-motion: reduce) {
-    .icon-pulse-ring::after { animation: none; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Registration Pending — Business ScaleUp Blueprint</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/theme.css?v=1">
+  <link rel="stylesheet" href="css/thankyou.css?v=1">
 </head>
-<body class="bg-[#131B4D] font-['Plus_Jakarta_Sans'] text-on-surface antialiased">
+<body>
 
-<!-- HEADER -->
-<header class="w-full bg-[#131B4D]/95 backdrop-blur-xl border-b border-surface-container-high">
-<div class="max-w-[800px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-center">
-<img src="assets/logo.png" alt="Business ScaleUp Blueprint" class="h-14 w-auto object-contain"/>
-</div>
-</header>
+  <nav class="navbar">
+    <div class="nav-inner ty-nav">
+      <span class="nav-logo"><img class="logo-full" src="assets/logo.png" alt="Business ScaleUp Blueprint"></span>
+    </div>
+  </nav>
 
-<main class="w-full max-w-[720px] mx-auto px-4 sm:px-6 py-12 sm:py-16 flex flex-col gap-10">
+  <main id="main">
 
-<!-- STATUS BANNER -->
-<section class="flex flex-col items-center text-center gap-4">
-<span class="icon-pulse-ring h-16 w-16 rounded-full bg-[#EAB308] flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-3xl text-[#1C1500]">hourglass_top</span>
-</span>
-<div class="flex flex-col gap-2">
-<span class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-error font-bold">One Step Remaining</span>
-<h1 class="font-['Plus_Jakarta_Sans'] text-2xl sm:text-3xl font-bold text-on-surface leading-tight">
-          Your Registration Is Not Complete Yet
-        </h1>
-<p class="font-['Plus_Jakarta_Sans'] text-sm sm:text-base text-secondary max-w-[520px] mx-auto leading-relaxed">
-          Your payment was received — we just need a few quick details to ensure this session helps you in the best way possible. Takes under 2 minutes.
-        </p>
-</div>
-</section>
+    <section class="hero section ty-hero">
+      <div class="wrap narrow">
+        <img class="ty-icon" src="assets/generated/growth-steps.png" alt="">
+        <p class="eyebrow-pill"><img src="assets/warning.svg" alt="">One Step Remaining</p>
+        <h1>Your Registration Is<br><span class="text-blue">Not Complete Yet</span></h1>
+        <p class="subline">Your payment was received — we just need a few quick details to ensure this session helps you in the best way possible.</p>
+        <p class="lead">Takes under 2 minutes.</p>
+      </div>
+    </section>
 
-<!-- FORM CARD -->
-<section class="bg-[#0E1642] border border-surface-container-high rounded-2xl p-6 sm:p-8">
-<form id="registration-form" class="flex flex-col gap-5" novalidate="">
+    <section class="section ty-section">
+      <div class="wrap narrow">
 
-<div class="flex flex-col gap-1.5">
-<label class="font-['Plus_Jakarta_Sans'] text-sm font-bold text-on-surface" for="fullName">Full Name <span class="text-error">*</span></label>
-<input class="w-full bg-[#131B4D] border border-surface-container-high rounded-lg px-4 py-3 text-sm text-on-surface font-['Plus_Jakarta_Sans'] focus:outline-none focus:border-[#EAB308] transition-colors" id="fullName" name="fullName" placeholder="Enter your full name" required="" type="text"/>
-</div>
+        <div class="ty-card" id="details-card">
+          <h2>Tell Us About Your Business</h2>
+          <form class="lead-form" id="details-form" novalidate>
+            <label>
+              <span>Full Name*</span>
+              <input type="text" name="fullName" autocomplete="name" placeholder="Enter your full name" required>
+            </label>
+            <label>
+              <span>Phone Number*</span>
+              <input type="tel" name="phoneNumber" autocomplete="tel" inputmode="tel" placeholder="Enter your WhatsApp-active phone number" required>
+            </label>
+            <label>
+              <span>Nature Of Business*</span>
+              <select name="natureOfBusiness" required>
+                <option value="" disabled selected>Select your nature of business</option>
+                <option value="Distributor">Distributor</option>
+                <option value="Manufacturer">Manufacturer</option>
+                <option value="Retailer">Retailer</option>
+                <option value="Professional">Professional (Dr, CA, Lawyer)</option>
+                <option value="Service Provider">Service Provider</option>
+                <option value="Ecommerce">Ecommerce</option>
+                <option value="Export / Import">Export / Import</option>
+                <option value="Dealer">Dealer</option>
+                <option value="Trader">Trader</option>
+                <option value="Medical Professional">Medical Professional</option>
+                <option value="Hospital Owner">Hospital Owner</option>
+                <option value="Real Estate Developer">Real Estate Developer</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <div class="ty-grid">
+              <label>
+                <span>Annual Revenue*</span>
+                <select name="annualRevenue" required>
+                  <option value="" disabled selected>Select a range</option>
+                  <option value="Under 1 Cr">Under ₹1 Cr</option>
+                  <option value="1-2 Cr">₹1 Cr – ₹2 Cr</option>
+                  <option value="2-5 Cr">₹2 Cr – ₹5 Cr</option>
+                  <option value="5-10 Cr">₹5 Cr – ₹10 Cr</option>
+                  <option value="10-25 Cr">₹10 Cr – ₹25 Cr</option>
+                  <option value="25-50 Cr">₹25 Cr – ₹50 Cr</option>
+                  <option value="Above 50 Cr">Above ₹50 Cr</option>
+                </select>
+              </label>
+              <label>
+                <span>Team Size*</span>
+                <select name="teamSize" required>
+                  <option value="" disabled selected>Select a range</option>
+                  <option value="1-5">1 – 5</option>
+                  <option value="6-15">6 – 15</option>
+                  <option value="16-30">16 – 30</option>
+                  <option value="31-50">31 – 50</option>
+                  <option value="51-100">51 – 100</option>
+                  <option value="100+">100+</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              <span>Top Business Challenge You Wish To Resolve*</span>
+              <textarea name="challenge1" rows="2" placeholder="e.g. Team management, lead generation, cash flow..." required></textarea>
+            </label>
+            <label>
+              <span>Top Business Goal You Wish To Achieve*</span>
+              <textarea name="goal1" rows="2" placeholder="e.g. Double revenue, build a management team, fix cash flow..." required></textarea>
+            </label>
+            <p class="lead-error" id="details-error" role="alert" hidden>Please fill in all fields before submitting.</p>
+            <button class="lead-submit" type="submit" id="details-submit">Complete My Registration</button>
+          </form>
+        </div>
 
-<div class="flex flex-col gap-1.5">
-<label class="font-['Plus_Jakarta_Sans'] text-sm font-bold text-on-surface" for="phoneNumber">Phone Number <span class="text-error">*</span></label>
-<input class="w-full bg-[#131B4D] border border-surface-container-high rounded-lg px-4 py-3 text-sm text-on-surface font-['Plus_Jakarta_Sans'] focus:outline-none focus:border-[#EAB308] transition-colors" id="phoneNumber" name="phoneNumber" placeholder="Enter your WhatsApp-active phone number" required="" type="tel"/>
-</div>
+        <div class="ty-card ty-wa" id="whatsapp-card">
+          <span class="ty-wa-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="#07091A"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.13L2 22l5.13-1.55a9.83 9.83 0 0 0 4.91 1.32h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.41 1.32-1.94 1.4-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.78-4.16-4.93-4.35-.14-.19-1.18-1.57-1.18-2.99 0-1.42.75-2.12 1.02-2.4.26-.29.57-.36.76-.36.19 0 .38.01.55.01.18.01.42-.07.65.5.24.58.81 2.01.88 2.15.07.15.12.32.02.51-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.13-.28.27-.12.53.16.27.71 1.18 1.53 1.91 1.05.94 1.93 1.24 2.2 1.38.27.14.43.12.59-.05.16-.16.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.12.06.65-.18 1.33z"/></svg>
+          </span>
+          <div class="ty-wa-copy">
+            <h3>Join Our Official WhatsApp Community</h3>
+            <p>Get all updates related to the session in one place.</p>
+            <p class="ty-wa-note" id="whatsapp-note" hidden>The community link will be shared with you shortly.</p>
+          </div>
+          <a class="btn-dark" href="#" id="whatsapp-cta" target="_blank" rel="noopener">Join Now</a>
+        </div>
 
-<div class="flex flex-col gap-1.5">
-<label class="font-['Plus_Jakarta_Sans'] text-sm font-bold text-on-surface" for="natureOfBusiness">Nature Of Business <span class="text-error">*</span></label>
-<select class="form-select w-full bg-[#131B4D] border border-surface-container-high rounded-lg px-4 py-3 text-sm text-on-surface font-['Plus_Jakarta_Sans'] focus:outline-none focus:border-[#EAB308] transition-colors" id="natureOfBusiness" name="natureOfBusiness" required="">
-<option disabled="" selected="" value="">Select your nature of business</option>
-<option value="Distributor">Distributor</option>
-<option value="Manufacturer">Manufacturer</option>
-<option value="Retailer">Retailer</option>
-<option value="Professional">Professional (Dr, CA, Lawyer)</option>
-<option value="Service Provider">Service Provider</option>
-<option value="Ecommerce">Ecommerce</option>
-<option value="Export / Import">Export / Import</option>
-<option value="Dealer">Dealer</option>
-<option value="Trader">Trader</option>
-<option value="Medical Professional">Medical Professional</option>
-<option value="Hospital Owner">Hospital Owner</option>
-<option value="Real Estate Developer">Real Estate Developer</option>
-<option value="Other">Other</option>
-</select>
-</div>
+        <div class="ty-card ty-date">
+          <p class="eyebrow">Don’t Forget</p>
+          <h2>Save The Date</h2>
+          <div class="event-pills">
+            <span><img src="assets/generated/session-calendar.png" alt=""><span>18.10.2026 (Sunday)</span></span>
+            <span><img src="assets/generated/session-clock.svg" alt=""><span>9:30 AM - 1 PM</span></span>
+            <span><img src="assets/generated/venue.svg" alt=""><span>Novotel, Mumbai International Airport</span></span>
+          </div>
+          <p class="ty-date-note">The session starts at 9:30 AM with a 5-Star Breakfast Meet &amp; Greet and runs until 1:00 PM.</p>
+          <div class="ty-actions">
+            <a class="btn-dark" id="gcal-link" href="#" target="_blank" rel="noopener">Add To Calendar</a>
+            <a class="btn-outline" id="ics-link" href="#">Apple / Outlook (.ics)</a>
+          </div>
+        </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-<div class="flex flex-col gap-1.5">
-<label class="font-['Plus_Jakarta_Sans'] text-sm font-bold text-on-surface" for="annualRevenue">Annual Revenue <span class="text-error">*</span></label>
-<select class="form-select w-full bg-[#131B4D] border border-surface-container-high rounded-lg px-4 py-3 text-sm text-on-surface font-['Plus_Jakarta_Sans'] focus:outline-none focus:border-[#EAB308] transition-colors" id="annualRevenue" name="annualRevenue" required="">
-<option disabled="" selected="" value="">Select a range</option>
-<option value="Under 1 Cr">Under &#8377;1 Cr</option>
-<option value="1-2 Cr">&#8377;1 Cr &ndash; &#8377;2 Cr</option>
-<option value="2-5 Cr">&#8377;2 Cr &ndash; &#8377;5 Cr</option>
-<option value="5-10 Cr">&#8377;5 Cr &ndash; &#8377;10 Cr</option>
-<option value="10-25 Cr">&#8377;10 Cr &ndash; &#8377;25 Cr</option>
-<option value="25-50 Cr">&#8377;25 Cr &ndash; &#8377;50 Cr</option>
-<option value="Above 50 Cr">Above &#8377;50 Cr</option>
-</select>
-</div>
+      </div>
+    </section>
 
-<div class="flex flex-col gap-1.5">
-<label class="font-['Plus_Jakarta_Sans'] text-sm font-bold text-on-surface" for="teamSize">Team Size <span class="text-error">*</span></label>
-<select class="form-select w-full bg-[#131B4D] border border-surface-container-high rounded-lg px-4 py-3 text-sm text-on-surface font-['Plus_Jakarta_Sans'] focus:outline-none focus:border-[#EAB308] transition-colors" id="teamSize" name="teamSize" required="">
-<option disabled="" selected="" value="">Select a range</option>
-<option value="1-5">1 &ndash; 5</option>
-<option value="6-15">6 &ndash; 15</option>
-<option value="16-30">16 &ndash; 30</option>
-<option value="31-50">31 &ndash; 50</option>
-<option value="51-100">51 &ndash; 100</option>
-<option value="100+">100+</option>
-</select>
-</div>
-</div>
+  </main>
 
-<div class="flex flex-col gap-1.5">
-<label class="font-['Plus_Jakarta_Sans'] text-sm font-bold text-on-surface" for="challenge1">Top Business Challenge You Wish To Resolve <span class="text-error">*</span></label>
-<textarea class="w-full bg-[#131B4D] border border-surface-container-high rounded-lg px-4 py-3 text-sm text-on-surface font-['Plus_Jakarta_Sans'] focus:outline-none focus:border-[#EAB308] transition-colors resize-none" id="challenge1" name="challenge1" placeholder="e.g. Team management, lead generation, cash flow..." required="" rows="2"></textarea>
-</div>
+  <footer>
+    <img class="footer-logo" src="assets/logo.png" alt="Business ScaleUp Blueprint" loading="lazy">
+    <p>© 2026 Business ScaleUp Blueprint · Dr. Ameet Parekh &amp; Ayush Joshi</p>
+  </footer>
 
-<div class="flex flex-col gap-1.5">
-<label class="font-['Plus_Jakarta_Sans'] text-sm font-bold text-on-surface" for="goal1">Top Business Goal You Wish To Achieve <span class="text-error">*</span></label>
-<textarea class="w-full bg-[#131B4D] border border-surface-container-high rounded-lg px-4 py-3 text-sm text-on-surface font-['Plus_Jakarta_Sans'] focus:outline-none focus:border-[#EAB308] transition-colors resize-none" id="goal1" name="goal1" placeholder="e.g. Double revenue, build a management team, fix cash flow..." required="" rows="2"></textarea>
-</div>
-
-<button class="cta-fire mt-2 inline-flex items-center justify-center gap-2 text-[#1C1500] font-['Plus_Jakarta_Sans'] font-bold text-sm uppercase tracking-wider py-4 rounded-xl transition-transform hover:scale-[1.01] active:scale-[0.98]" id="submit-btn" type="submit">
-<span id="submit-btn-label">Complete My Registration</span>
-<span class="material-symbols-outlined text-lg">arrow_forward</span>
-</button>
-<p id="form-error" class="hidden text-xs text-error font-['Plus_Jakarta_Sans'] text-center">Please fill in all fields before submitting.</p>
-</form>
-</section>
-
-<!-- WHATSAPP COMMUNITY -->
-<section id="whatsapp-section" class="bg-[#0E1642] border border-[#25D366]/30 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 transition-all">
-<span class="h-14 w-14 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">
-<svg viewBox="0 0 24 24" width="28" height="28" fill="#0E1642"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.13L2 22l5.13-1.55a9.83 9.83 0 0 0 4.91 1.32h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.41 1.32-1.94 1.4-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.78-4.16-4.93-4.35-.14-.19-1.18-1.57-1.18-2.99 0-1.42.75-2.12 1.02-2.4.26-.29.57-.36.76-.36.19 0 .38.01.55.01.18.01.42-.07.65.5.24.58.81 2.01.88 2.15.07.15.12.32.02.51-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.13-.28.27-.12.53.16.27.71 1.18 1.53 1.91 1.05.94 1.93 1.24 2.2 1.38.27.14.43.12.59-.05.16-.16.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.12.06.65-.18 1.33z"/></svg>
-</span>
-<div class="flex flex-col gap-1 flex-1 text-center sm:text-left">
-<h3 class="font-['Plus_Jakarta_Sans'] text-base sm:text-lg font-bold text-on-surface">Join Our Official WhatsApp Community</h3>
-<p class="font-['Plus_Jakarta_Sans'] text-sm text-secondary">Get all updates related to the session in one place.</p>
-</div>
-<a class="cta-fire shrink-0 whitespace-nowrap inline-flex items-center justify-center gap-2 text-[#1C1500] font-['Plus_Jakarta_Sans'] font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98]" href="#" id="whatsapp-cta" rel="noopener" target="_blank">
-<span class="material-symbols-outlined text-lg">chat</span>
-<span>Join Now</span>
-</a>
-</section>
-
-<!-- SAVE THE DATE / EVENT REMINDER -->
-<section class="bg-[#0E1642] border border-surface-container-high rounded-2xl p-6 sm:p-8 flex flex-col items-center gap-5 text-center">
-<span class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-[#F59E0B] font-bold">Don&rsquo;t Forget</span>
-<h3 class="font-['Plus_Jakarta_Sans'] text-lg sm:text-xl font-bold text-on-surface">Save The Date</h3>
-<div class="flex flex-wrap items-center justify-center gap-3">
-<span class="inline-flex items-center gap-2 bg-[#131B4D]/80 border border-surface-container-high rounded-full px-4 py-2 text-xs sm:text-sm text-white font-['Plus_Jakarta_Sans'] font-semibold"><span class="material-symbols-outlined text-[#FBBF24] text-base">calendar_month</span>18 Oct 2026</span>
-<span class="inline-flex items-center gap-2 bg-[#131B4D]/80 border border-surface-container-high rounded-full px-4 py-2 text-xs sm:text-sm text-white font-['Plus_Jakarta_Sans'] font-semibold"><span class="material-symbols-outlined text-[#FBBF24] text-base">schedule</span>9:30 AM &ndash; 1:00 PM</span>
-<span class="inline-flex items-center gap-2 bg-[#131B4D]/80 border border-surface-container-high rounded-full px-4 py-2 text-xs sm:text-sm text-white font-['Plus_Jakarta_Sans'] font-semibold"><span class="material-symbols-outlined text-[#FBBF24] text-base">corporate_fare</span>Novotel, Mumbai International Airport</span>
-</div>
-<p class="font-['Plus_Jakarta_Sans'] text-sm text-secondary max-w-[480px]">
-        The session starts at 9:30 AM with a 5-Star Breakfast Meet &amp; Greet and runs until 1:00 PM.
-      </p>
-<div class="flex flex-wrap items-center justify-center gap-3 pt-1">
-<a class="cta-fire inline-flex items-center justify-center gap-2 text-[#1C1500] font-['Plus_Jakarta_Sans'] font-bold text-xs sm:text-sm uppercase tracking-wider px-5 py-3 rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98]" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Business%20ScaleUp%20Blueprint%20%E2%80%94%20Mumbai&amp;dates=20261018T040000Z/20261018T073000Z&amp;details=Session%20starts%20at%209%3A30%20AM%20with%20a%205-Star%20Breakfast%20Meet%20%26%20Greet%20and%20runs%20until%201%3A00%20PM.&amp;location=Novotel%20Mumbai%20International%20Airport%2C%20Andheri-Kurla%20Road%2C%20Marol%2C%20Mumbai" rel="noopener" target="_blank">
-<span class="material-symbols-outlined text-lg">event_available</span>
-<span>Add To Calendar</span>
-</a>
-<a class="inline-flex items-center justify-center gap-2 text-secondary hover:text-on-surface font-['Plus_Jakarta_Sans'] font-semibold text-xs sm:text-sm px-5 py-3 rounded-xl border border-surface-container-high transition-colors" href="#" id="ics-download-link">
-<span class="material-symbols-outlined text-lg">download</span>
-<span>Apple / Outlook (.ics)</span>
-</a>
-</div>
-</section>
-
-<p class="text-center text-xs text-secondary font-['Plus_Jakarta_Sans']">
-        Business ScaleUp Blueprint &middot; 18 Oct 2026 &middot; Novotel, Mumbai International Airport
-      </p>
-
-</main>
-
-<script>
-(function(){
-  var form = document.getElementById('registration-form');
-  var errorMsg = document.getElementById('form-error');
-  var submitBtn = document.getElementById('submit-btn');
-  var submitLabel = document.getElementById('submit-btn-label');
-  var whatsappSection = document.getElementById('whatsapp-section');
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var fields = form.querySelectorAll('[required]');
-    var allFilled = true;
-    fields.forEach(function(f){ if (!f.value) allFilled = false; });
-
-    if (!allFilled) {
-      errorMsg.classList.remove('hidden');
-      return;
-    }
-    errorMsg.classList.add('hidden');
-
-    // TODO: replace with real submission endpoint (GHL webhook / form action)
-    submitLabel.textContent = 'Registration Complete';
-    submitBtn.querySelector('.material-symbols-outlined').textContent = 'check_circle';
-    submitBtn.disabled = true;
-    submitBtn.classList.add('opacity-80');
-
-    whatsappSection.classList.add('ring-2', 'ring-[#25D366]');
-    whatsappSection.scrollIntoView({behavior: 'smooth', block: 'center'});
-  });
-
-  var icsLink = document.getElementById('ics-download-link');
-  icsLink.addEventListener('click', function(e){
-    e.preventDefault();
-    var ics = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Business ScaleUp Blueprint//Mumbai//EN',
-      'BEGIN:VEVENT',
-      'UID:bsb-mumbai-18oct2026@businessscaleupblueprint',
-      'DTSTAMP:20260101T000000Z',
-      'DTSTART:20261018T040000Z',
-      'DTEND:20261018T073000Z',
-      'SUMMARY:Business ScaleUp Blueprint — Mumbai',
-      'LOCATION:Novotel Mumbai International Airport\\, Andheri-Kurla Road\\, Marol\\, Mumbai',
-      'DESCRIPTION:Session starts at 9:30 AM with a 5-Star Breakfast Meet & Greet and runs until 1:00 PM.',
-      'END:VEVENT',
-      'END:VCALENDAR'
-    ].join('\r\n');
-    var blob = new Blob([ics], {type: 'text/calendar;charset=utf-8'});
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = 'business-scaleup-blueprint-mumbai.ics';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
-  });
-})();
-</script>
+  <script type="module" src="script/thankyou.js?v=1"></script>
 </body>
 </html>
