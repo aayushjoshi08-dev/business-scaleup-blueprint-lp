@@ -3,9 +3,9 @@ import { WHATSAPP_COMMUNITY_URL, DETAILS_WEBHOOK_URL } from "./config.js";
 const form = document.getElementById("details-form");
 const errorBox = document.getElementById("details-error");
 const submitBtn = document.getElementById("details-submit");
-const waCard = document.getElementById("whatsapp-card");
-const waCta = document.getElementById("whatsapp-cta");
-const waNote = document.getElementById("whatsapp-note");
+const successBox = document.getElementById("details-success");
+const BUTTON_LABEL = submitBtn.textContent;
+let done = false;
 
 // Prefill from the checkout redirect (?name=...&whatsapp=...)
 const params = new URLSearchParams(window.location.search);
@@ -17,16 +17,6 @@ Object.entries(prefill).forEach(([field, value]) => {
   if (value && form.elements[field]) form.elements[field].value = value;
 });
 
-// WhatsApp community link
-if (WHATSAPP_COMMUNITY_URL) {
-  waCta.href = WHATSAPP_COMMUNITY_URL;
-} else {
-  waCta.addEventListener("click", (event) => {
-    event.preventDefault();
-    waNote.hidden = false;
-  });
-}
-
 function showError(message) {
   errorBox.textContent = message;
   errorBox.hidden = false;
@@ -34,6 +24,7 @@ function showError(message) {
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  if (done) return;
   errorBox.hidden = true;
 
   const data = Object.fromEntries(new FormData(form).entries());
@@ -66,14 +57,26 @@ form.addEventListener("submit", async (event) => {
       console.error("Details submission failed", error);
       showError("We couldn't save your details. Please check your connection and try again.");
       submitBtn.disabled = false;
-      submitBtn.textContent = "Complete My Registration";
+      submitBtn.textContent = BUTTON_LABEL;
       return;
     }
   }
 
+  done = true;
   submitBtn.textContent = "Registration Complete ✓";
-  waCard.classList.add("is-active");
-  waCard.scrollIntoView({ behavior: "smooth", block: "center" });
+  successBox.hidden = false;
+
+  if (WHATSAPP_COMMUNITY_URL) {
+    // Details saved — send them straight into the WhatsApp community.
+    successBox.textContent = "Taking you to the WhatsApp community… ";
+    const fallback = document.createElement("a");
+    fallback.href = WHATSAPP_COMMUNITY_URL;
+    fallback.textContent = "Tap here if it doesn’t open.";
+    successBox.appendChild(fallback);
+    setTimeout(() => window.location.assign(WHATSAPP_COMMUNITY_URL), 900);
+  } else {
+    successBox.textContent = "Your registration is complete. The WhatsApp community link will be shared with you shortly.";
+  }
 });
 
 // Add to calendar: session starts 9:30 AM IST (04:00 UTC) and ends 1:00 PM IST (07:30 UTC) on 18 Oct 2026
