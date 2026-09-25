@@ -265,3 +265,9 @@ a.cta-dark small img,a.cta-block small img,a.btn small img{display:inline-block 
   .wc-banner .wc-coach-img.presenter-photo{width:100% !important;height:auto !important;aspect-ratio:3/2;margin:14px 0 0 0 !important;}
 }
 .footer-logo{display:block;width:150px;max-width:60%;height:auto;margin:0 auto 14px;}
+
+/* VSL is a square (1:1) video: square card in the hero, contained player in the modal */
+.video-card{width:min(100%,480px) !important;aspect-ratio:1/1 !important;}
+.video-card img{object-fit:cover;}
+.modal .modal-video{display:block;max-width:min(100%,900px);max-height:88vh;width:auto;height:auto;aspect-ratio:1/1;background:#000;border-radius:12px;}
+.modal .modal-video[hidden]{display:none;}
