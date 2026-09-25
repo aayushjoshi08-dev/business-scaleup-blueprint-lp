@@ -5,7 +5,8 @@ Static landing page (no build step). Structure and flow mirror the reference VSL
 ## Go-live checklist — edit `script/config.js`
 - `VSL_URL` — YouTube/Vimeo embed URL or a video file path (e.g. `assets/vsl.mp4`). Replace `assets/video-thumb.webp` with the VSL thumbnail (1200×675).
 - `CHECKOUT_URL` — payment link the "Reserve My Seat" form sends people to.
-- WhatsApp community link — set in `thank-you.html` (`#whatsapp-cta`).
+- `WHATSAPP_COMMUNITY_URL` — community invite link; the thank-you form's button redirects here after saving.
+- `DETAILS_WEBHOOK_URL` — where the thank-you details form posts (JSON). Without it the answers are not stored.
 
 Theme colours live in the `:root` tokens at the top of `css/theme.css`.
 

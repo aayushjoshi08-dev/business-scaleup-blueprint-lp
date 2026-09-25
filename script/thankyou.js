@@ -79,12 +79,12 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-// Add to calendar: session starts 9:30 AM IST (04:00 UTC) and ends 1:00 PM IST (07:30 UTC) on 18 Oct 2026
+// Add to calendar: session starts 9:30 AM IST (04:00 UTC) and ends 1:00 PM IST (07:30 UTC) on 1 Nov 2026
 const TITLE = "Business ScaleUp Blueprint — Mumbai";
 const LOCATION = "Novotel Mumbai International Airport, Andheri-Kurla Road, Marol, Mumbai";
 const DETAILS = "Session starts at 9:30 AM with a 5-Star Breakfast Meet & Greet and runs until 1:00 PM.";
-const START = "20261018T040000Z";
-const END = "20261018T073000Z";
+const START = "20261101T040000Z";
+const END = "20261101T073000Z";
 
 document.getElementById("gcal-link").href =
   "https://calendar.google.com/calendar/render?action=TEMPLATE" +
@@ -101,7 +101,7 @@ document.getElementById("ics-link").addEventListener("click", (event) => {
     "VERSION:2.0",
     "PRODID:-//Business ScaleUp Blueprint//Mumbai//EN",
     "BEGIN:VEVENT",
-    "UID:bsb-mumbai-18oct2026@businessscaleupblueprint",
+    "UID:bsb-mumbai-1nov2026@businessscaleupblueprint",
     "DTSTAMP:20260101T000000Z",
     "DTSTART:" + START,
     "DTEND:" + END,
