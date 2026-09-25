@@ -1,0 +1,259 @@
+/* ============================================================
+   Business ScaleUp Blueprint - dark theme overlay
+   Same skin architecture as the reference funnel, re-branded to the
+   BSB palette (navy + gold/orange). Change the :root tokens to retheme.
+   ============================================================ */
+/* ============================================================
+   Elearn ProMax — dark brand theme overlay for /lp/ funnels
+   Pure skin: no layout, markup, link or JS changes.
+   Tokens: bg #060A1E · panel #0E1642 · cyan #FBBF24 · gold #FDE68A
+   gradient 120deg #FBBF24 → #F97316 → #EA580C · Inter
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --epx-bg:#060A1E; --epx-panel:#0E1642; --epx-panel2:#0A1136;
+  --epx-line:rgba(255,255,255,.08); --epx-hline:rgba(251,191,36,.18);
+  --epx-text:#EAF0FF; --epx-muted:#93A0C4; --epx-soft:#C3CFE8;
+  --epx-cyan:#FBBF24; --epx-gold:#FDE68A; --epx-red:#FF6B81;
+  --epx-grad:linear-gradient(120deg,#FDE047 0%,#FBBF24 30%,#F97316 100%);
+}
+
+/* ---------- base ---------- */
+html,body{background:var(--epx-bg) !important;color:var(--epx-text) !important;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif !important;}
+body *{font-family:'Inter',-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important;}
+h1,h2,h3,h4,h5{color:var(--epx-text) !important;font-weight:800 !important;letter-spacing:-.02em !important;}
+p,li,span,td,label,small{color:var(--epx-soft);}
+a{color:var(--epx-cyan);}
+hr{border-color:var(--epx-line) !important;}
+section,div[class*="section"],.section,.hero,.problem,.proof,.discover,.fit,.learn,.coach,.faq,.trusted,
+.mission,.deep,.steps,.serious-check,.cta,.cta-band,.event,.testimonials{background:transparent !important;}
+section[style*="background"],div[style*="background:#fff"],div[style*="background: #fff"],
+div[style*="background:#ffffff"],div[style*="background: rgb(255"]{background:var(--epx-bg) !important;}
+
+/* alternating light bands → subtle dark panels */
+.section:nth-of-type(even),.proof,.fit,.discover{background:transparent !important;}
+
+/* ---------- navbar ---------- */
+.navbar,nav,header{background:rgba(6,10,30,.82) !important;backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--epx-line) !important;box-shadow:none !important;}
+.nav-logo,.navbar a{color:var(--epx-text) !important;}
+.nav-logo span,.text-blue{color:var(--epx-cyan) !important;
+  background:var(--epx-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* ---------- headings / accents ---------- */
+.section-title,.mission-title,.proof-title,.student-title{color:var(--epx-text) !important;}
+.section-sub,.subline,.center-muted,.lead,.cta-label{color:var(--epx-muted) !important;}
+.eyebrow,.eyebrow-pill,.lead-kicker,.wc-label{color:var(--epx-cyan) !important;
+  background:rgba(251,191,36,.07) !important;border:1px solid var(--epx-hline) !important;border-radius:100px;}
+.eyebrow{background:transparent !important;border:none !important;letter-spacing:.18em;text-transform:uppercase;font-weight:800;}
+.text-red,.red-head{color:var(--epx-red) !important;}
+.highlight{color:var(--epx-gold) !important;background:transparent !important;}
+
+/* ---------- buttons (links untouched — style only) ---------- */
+.btn,.btn-dark,.nav-cta,.lead-submit,.cta a,.cta-block a,.cta-dark a,button[type="submit"]{
+  background:var(--epx-grad) !important;color:#07091A !important;border:none !important;
+  border-radius:100px !important;font-weight:800 !important;
+  box-shadow:0 10px 40px -8px rgba(249,115,22,.55) !important;text-shadow:none !important;}
+.btn:hover,.btn-dark:hover,.nav-cta:hover,.lead-submit:hover{transform:translateY(-2px);filter:brightness(1.05);}
+.btn-outline{background:rgba(255,255,255,.05) !important;color:var(--epx-text) !important;
+  border:1px solid var(--epx-line) !important;border-radius:100px !important;box-shadow:none !important;}
+
+/* ---------- cards / panels ---------- */
+.discover-card,.fit-card,.proof-card,.insight-card,.stat-card,.video-card,.coach-card,.workshop-card,
+.wc-body,.wc-banner,.event,.cards>*,.learn-grid>*,.discover-grid>*,.fit-grid>*,.event-grid>*,
+.three-cards>*,.three>*,.steps,.steps-list,.notice,.serious-check,.pain-list li,.accordion,
+.coach-grid,.coach-wrap,.stats,.stats-row{
+  background:var(--epx-panel) !important;border:1px solid var(--epx-line) !important;
+  color:var(--epx-soft) !important;box-shadow:none !important;border-radius:18px;}
+.pain-list li{border-radius:14px;}
+.stats,.stats-row,.coach-grid,.coach-wrap{background:transparent !important;border:none !important;}
+.stat-card,.stats>div{background:var(--epx-panel) !important;border:1px solid var(--epx-line) !important;border-radius:16px;}
+.stat-card strong,.stats strong{color:var(--epx-cyan) !important;font-weight:900 !important;}
+.fit-yes{color:#4ADE9C !important;}
+.fit-no{color:var(--epx-red) !important;}
+.wc-price{color:var(--epx-gold) !important;}
+.wc-price-old{color:var(--epx-muted) !important;}
+.wc-stars,.wc-rating{color:var(--epx-gold) !important;}
+.wc-divider{border-color:var(--epx-line) !important;background:var(--epx-line) !important;}
+.coach-photo,.wc-coach-img{border-radius:18px;border:1px solid var(--epx-line);}
+.concept-icon,.learn-icon,.steps-icon,.h-icon,.icon,.stat-icon{filter:none;color:var(--epx-cyan) !important;background:rgba(251,191,36,.08) !important;border-radius:12px;}
+
+/* ---------- accordion / faq ---------- */
+.accordion,.faq details,.faq .accordion{background:var(--epx-panel) !important;border:1px solid var(--epx-line) !important;color:var(--epx-soft) !important;}
+.accordion summary,.faq summary,.accordion button{color:var(--epx-text) !important;background:transparent !important;}
+details[open]{border-color:var(--epx-hline) !important;}
+
+/* ---------- CTA bands ---------- */
+.cta-block,.cta-dark,.cta-band,.cta{background:radial-gradient(circle at 50% 0%,rgba(251,191,36,.14),transparent 60%) !important;
+  border:1px solid var(--epx-line) !important;border-radius:24px;color:var(--epx-text) !important;}
+.cta-block *,.cta-dark *,.cta-band *,.cta *{color:var(--epx-text);}
+.cta-block a,.cta-dark a,.cta-band a,.cta a{color:#07091A !important;}
+
+/* ---------- popup lead form (style only, logic untouched) ---------- */
+.lead-modal,.modal{background:rgba(6,10,30,.82) !important;backdrop-filter:blur(6px);}
+.lead-dialog{background:var(--epx-panel) !important;border:1px solid var(--epx-line) !important;
+  border-radius:22px !important;color:var(--epx-text) !important;box-shadow:0 30px 90px -20px rgba(0,0,0,.8) !important;}
+.lead-dialog h2,.lead-dialog h3,.lead-copy{color:var(--epx-text) !important;}
+.lead-form input,.lead-form select,.lead-form textarea{
+  background:var(--epx-panel2) !important;border:1px solid var(--epx-line) !important;
+  color:var(--epx-text) !important;border-radius:12px !important;}
+.lead-form input::placeholder{color:#5F6E8C !important;}
+.lead-form input:focus{border-color:var(--epx-cyan) !important;outline:none !important;box-shadow:0 0 0 3px rgba(251,191,36,.15) !important;}
+.lead-error{color:var(--epx-red) !important;}
+.lead-close,.modal-close{color:var(--epx-muted) !important;background:rgba(255,255,255,.06) !important;border-radius:100px;}
+
+/* ---------- imagery ---------- */
+.testimonials-grid img,.testimonials img{border-radius:14px;border:1px solid var(--epx-line);}
+.video-card{overflow:hidden;}
+.wc-system-art{border-radius:14px;}
+
+/* ---------- footer ---------- */
+footer{background:#050818 !important;border-top:1px solid var(--epx-line) !important;color:var(--epx-muted) !important;}
+footer a{color:var(--epx-muted) !important;}
+footer a:hover{color:var(--epx-cyan) !important;}
+
+/* ---------- round-2 fixes ---------- */
+/* big CTA anchors that double as buttons */
+a.cta-dark,a.cta-block{background:var(--epx-grad) !important;color:#07091A !important;
+  border-radius:100px !important;border:none !important;
+  box-shadow:0 10px 40px -8px rgba(249,115,22,.55) !important;}
+a.cta-dark *,a.cta-block *{color:#07091A !important;}
+
+/* readable text inside all card containers */
+.discover-card *,.fit-card *,.proof-card *,.insight-card *,.stat-card *,.video-card *,
+.coach-card *,.workshop-card *,.wc-body *,.cards>* *,.learn-grid>* *,.event *,.notice *,
+.steps *,.serious-check *,.accordion *,.mission *,.deep *{color:var(--epx-soft) !important;}
+.discover-card h1,.discover-card h2,.discover-card h3,.discover-card h4,
+.fit-card h3,.fit-card h4,.proof-card h3,.insight-card h3,.coach-card h3,.coach-card h4,
+.workshop-card h1,.workshop-card h2,.workshop-card h3,.wc-name,.event h3,.event h4,
+.cards>* h3,.learn-grid>* h3,.steps h3,.mission h2,.mission h3,.accordion summary,
+.serious-check h2,.serious-check h3,.notice b,.wc-body b,.workshop-card b,strong{color:var(--epx-text) !important;}
+.wc-learn-title{color:var(--epx-muted) !important;}
+.wc-label{color:var(--epx-cyan) !important;}
+.wc-price{color:var(--epx-gold) !important;}
+.wc-price-old{color:var(--epx-muted) !important;text-decoration:line-through;}
+.wc-stars,.wc-rating,.wc-rating *{color:var(--epx-gold) !important;}
+.fit-yes,.fit-yes *{color:#4ADE9C !important;}
+.fit-no,.fit-no *{color:var(--epx-red) !important;}
+
+/* event / schedule pills */
+.event-pills>*,.event-pills span{background:var(--epx-panel) !important;color:var(--epx-soft) !important;
+  border:1px solid var(--epx-line) !important;border-radius:100px !important;}
+.event-pills img,.event-pills svg{background:transparent !important;border:none !important;}
+
+/* buttons keep dark text even inside card catch-alls */
+.btn,.btn-dark,.nav-cta,.lead-submit,.btn *,.btn-dark *,.nav-cta *{color:#07091A !important;}
+.btn-outline,.btn-outline *{color:var(--epx-text) !important;}
+
+/* round-3: steps rows (blue boxes) → brand gradient tint */
+.steps-list li,[class*="steps"] li,.steps>div{background:linear-gradient(120deg,rgba(251,191,36,.16),rgba(249,115,22,.16)) !important;
+  border:1px solid var(--epx-hline) !important;color:var(--epx-text) !important;border-radius:14px !important;}
+.steps-list li *,[class*="steps"] li *{color:var(--epx-text) !important;}
+
+/* round-4: og combined .cta.btn anchors — button style must win over band style */
+a.btn,a.cta.btn,a.btn.blink1{background:var(--epx-grad) !important;color:#07091A !important;
+  animation:none !important;border-radius:100px !important;border:none !important;
+  box-shadow:0 10px 40px -8px rgba(249,115,22,.55) !important;}
+a.btn *,a.cta.btn *{color:#07091A !important;}
+
+/* round-5: steps-list anchor rows (bright blue) → brand gradient tint */
+.steps-list>a,.steps-list a{background:linear-gradient(120deg,rgba(251,191,36,.16),rgba(249,115,22,.16)) !important;
+  border:1px solid var(--epx-hline) !important;color:var(--epx-text) !important;border-radius:14px !important;box-shadow:none !important;}
+.steps-list a *{color:var(--epx-text) !important;}
+
+/* round-6: mobile feedback fixes */
+/* pills: only the OUTER pill is a box — kill inner borders on nested spans/imgs */
+.event-pills span span,.event-pills span img{background:transparent !important;border:none !important;border-radius:0 !important;}
+/* icon chips: no boxed look on icons */
+.icon,.h-icon,.stat-icon,.concept-icon,.learn-icon,.steps-icon{background:transparent !important;border:none !important;}
+/* badges/ratings: gold-on-dark, never white-on-yellow or gold-on-white */
+.wc-badge{background:rgba(253,230,138,.14) !important;color:var(--epx-gold) !important;border:1px solid rgba(253,230,138,.4) !important;}
+.wc-badge *{color:var(--epx-gold) !important;}
+.wc-rating{background:rgba(253,230,138,.12) !important;border:1px solid rgba(253,230,138,.35) !important;color:var(--epx-gold) !important;}
+/* coach quote / bio was invisible (dark on dark) */
+.coach-bio,.coach-bio *,.coach-copy,.coach-copy *,.coach-card blockquote{color:var(--epx-soft) !important;}
+/* caution icon alignment inside CTA sub-line (mobile) */
+a.cta-dark small,a.cta-block small,a.btn small{display:inline-flex !important;align-items:center !important;justify-content:center !important;gap:6px;flex-wrap:wrap;}
+a.cta-dark small img,a.cta-block small img,a.btn small img{width:14px !important;height:14px !important;display:inline-block !important;vertical-align:middle !important;flex:none;}
+/* FAQ answers: one consistent size/weight */
+.accordion p,.accordion li{font-size:15.5px !important;font-weight:400 !important;line-height:1.75 !important;color:var(--epx-soft) !important;}
+/* footer nav spacing like main site */
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;}
+footer nav a{font-size:13.5px;}
+
+/* round-7: rating chip inner white pill */
+.wc-rating .wc-stars,.wc-rating .wc-exc,.wc-rating span{background:transparent !important;color:var(--epx-gold) !important;border:none !important;}
+
+/* round-8: trusted-by visibility, Coach pill width, rating radius, photo border */
+.trusted,.trusted *{color:#C3CFE8 !important;}
+.trusted b,.trusted strong{color:#EAF0FF !important;}
+.wc-label{display:inline-block !important;width:auto !important;padding:3px 12px !important;}
+.wc-rating{border-radius:12px !important;padding:8px 12px !important;text-align:center;}
+.wc-coach-img{border:none !important;border-radius:50% !important;}
+.wc-banner div:not(.wc-badge){background:transparent !important;border:none !important;}
+
+/* round-9: nav wordmark glow, pulsing CTA, clickable rating */
+.nav-logo,.navbar .nav-logo{filter:drop-shadow(0 0 10px rgba(251,191,36,.45)) drop-shadow(0 0 26px rgba(249,115,22,.30));}
+@keyframes epxPulse{0%,100%{transform:scale(1);box-shadow:0 10px 40px -8px rgba(249,115,22,.55);}50%{transform:scale(1.025);box-shadow:0 16px 54px -6px rgba(251,191,36,.65);}}
+a.cta-dark,a.cta-block,a.cta.btn,a.btn.blink1{animation:epxPulse 2.2s ease-in-out infinite !important;}
+@media (prefers-reduced-motion: reduce){a.cta-dark,a.cta-block,a.cta.btn{animation:none !important;}}
+a.wc-rating{display:block;text-decoration:none !important;cursor:pointer;transition:transform .2s;}
+a.wc-rating:hover{transform:translateY(-2px);border-color:var(--epx-gold) !important;}
+
+/* round-10: workshop banner spacing (photo clip, brain overlap) + caution icon inline */
+.wc-banner{padding-right:20px !important;}
+.wc-system-art{margin-right:14px !important;transform:translateY(-10px);}
+.wc-coach-img{flex:none;}
+@media(max-width:640px){
+  .wc-banner{padding-right:14px !important;}
+  .wc-coach-img{width:130px !important;height:130px !important;}
+  .wc-system-art{width:96px !important;height:96px !important;margin-right:8px !important;transform:translateY(-6px);}
+}
+a.cta-dark small,a.cta-block small,a.btn small{display:block !important;}
+a.cta-dark small img,a.cta-block small img,a.btn small img{display:inline-block !important;width:13px !important;height:13px !important;vertical-align:-2px !important;margin:0 4px 0 0 !important;}
+
+/* round-11: mobile - wrap banner so coach photo is fully visible */
+@media(max-width:640px){
+  .wc-banner{flex-wrap:wrap !important;padding:22px 16px 18px !important;}
+  .wc-banner-content{width:100% !important;flex:1 1 100% !important;}
+  .wc-system-art{width:92px !important;height:92px !important;margin:12px 14px 0 0 !important;transform:none !important;}
+  .wc-coach-img{width:118px !important;height:118px !important;margin:6px 0 0 0 !important;flex:none !important;}
+}
+
+
+/* ---------- BSB additions ---------- */
+.nav-logo{display:inline-flex;align-items:center;gap:10px;filter:none !important;}
+.nav-logo img{display:block;height:auto;}
+.nav-logo .logo-icon{width:30px;height:30px;}
+.nav-logo .logo-word{height:20px;width:auto;}
+.nav-logo em{display:none;}
+.event-pills img{width:22px;height:22px;object-fit:contain;}
+.case-card{background:var(--epx-panel) !important;border:1px solid var(--epx-line) !important;border-radius:16px;padding:12px;margin:0;display:flex;flex-direction:column;gap:10px;text-align:left;}
+.case-card img{aspect-ratio:1/1;object-fit:cover;border-radius:12px !important;border:1px solid var(--epx-line);box-shadow:none !important;}
+.case-card .case-tag{display:inline-block;width:fit-content;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--epx-gold) !important;background:rgba(253,230,138,.12);border:1px solid rgba(253,230,138,.35);border-radius:100px;padding:2px 10px;}
+.case-card strong.case-name{display:block;font-size:16px;color:var(--epx-text) !important;}
+.case-card .case-sector{display:block;font-size:12.5px;color:var(--epx-muted) !important;}
+.case-card .case-growth{display:block;font-size:17px;font-weight:800;line-height:1.25;color:var(--epx-gold) !important;}
+.case-card .case-note{display:block;font-size:13px;line-height:1.5;color:var(--epx-soft) !important;}
+.case-foot{text-align:center;font-size:12px;color:var(--epx-muted) !important;margin:-14px auto 30px;max-width:640px;}
+.coach-quote{max-width:640px;margin:0 auto 28px;text-align:center;font-style:italic;font-size:18px;line-height:1.6;color:var(--epx-soft) !important;}
+.wc-rating .wc-stars{font-size:15px;}
+.lead-form select{width:100%;}
+.video-note{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:12px;color:#fff !important;opacity:.85;}
+@media(max-width:640px){
+  .nav-logo .logo-word{height:16px;}
+  .nav-logo .logo-icon{width:26px;height:26px;}
+}
+.stat-card strong{white-space:nowrap;font-size:clamp(22px,4.4vw,34px) !important;}
+@media(max-width:767px){
+  .testimonials-grid{grid-template-columns:1fr 1fr !important;gap:10px !important;}
+  .case-card{padding:8px;gap:7px;}
+  .case-card strong.case-name{font-size:14px;}
+  .case-card .case-sector{font-size:11px;}
+  .case-card .case-growth{font-size:14px;}
+  .case-card .case-note{font-size:11.5px;}
+  .case-card .case-tag{font-size:10px;padding:1px 8px;}
+}
+.wc-rating .wc-exc{display:block;text-align:center;font-size:12.5px;}
