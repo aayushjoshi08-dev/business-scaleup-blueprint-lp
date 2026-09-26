@@ -12,3 +12,5 @@ Static landing page (no build step). Structure and flow mirror the reference VSL
 Theme colours live in the `:root` tokens at the top of `css/theme.css`.
 
 Small emoji graphics (megaphone, warning, pointing hands) are Twemoji, CC-BY 4.0.
+
+**After editing `script/config.js`:** bump the `?v=` on the `config.js` import at the top of `script/script.js` and `script/thankyou.js` (and the `script.js?v=` / `thankyou.js?v=` tags in the HTML). GitHub Pages lets browsers cache files for ~10 minutes; the imports tolerate a stale config, but the bump makes returning visitors see new links immediately.

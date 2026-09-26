@@ -1,4 +1,8 @@
-import { VSL_URL, CHECKOUT_URL, CHECKOUT_URL_PARTNER, THANK_YOU_PATH } from "./config.js";
+// Namespace import + defaults: a stale cached config.js can never break the page (a missing named export would).
+// Bump ?v= when config.js changes so returning visitors get the new values immediately.
+import * as config from "./config.js?v=4";
+
+const { VSL_URL = "", CHECKOUT_URL = "", CHECKOUT_URL_PARTNER = "", THANK_YOU_PATH = "thank-you.html" } = config;
 
 const videoButton = document.querySelector("[data-video]");
 const modal = document.querySelector(".modal");

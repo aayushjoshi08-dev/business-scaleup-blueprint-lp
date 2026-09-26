@@ -1,4 +1,7 @@
-import { WHATSAPP_COMMUNITY_URL, DETAILS_WEBHOOK_URL } from "./config.js";
+// Namespace import + defaults: a stale cached config.js can never break the page.
+import * as config from "./config.js?v=4";
+
+const { WHATSAPP_COMMUNITY_URL = "", DETAILS_WEBHOOK_URL = "" } = config;
 
 const form = document.getElementById("details-form");
 const errorBox = document.getElementById("details-error");
