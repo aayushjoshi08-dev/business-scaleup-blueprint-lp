@@ -332,3 +332,6 @@ a.cta-dark small img.warn-red,a.cta-block small img.warn-red{filter:none !import
 .learn-grid .concept-icons{width:104px;height:64px;}
 .learn-grid .concept-icons img{width:46px;height:46px;margin-left:-10px;}
 .learn-grid .concept-icons img:first-child{margin-left:0;}
+
+/* CTAs scroll here: keep the heading clear of the sticky navbar */
+#passes{scroll-margin-top:76px;}

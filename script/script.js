@@ -20,7 +20,7 @@ const leadPassNote = document.querySelector("[data-lead-pass]");
 const leadTriggers = document.querySelectorAll("[data-lead-trigger]");
 
 const PASSES = {
-  solo: { label: "Reserve My Seat Now ₹1,499", url: CHECKOUT_URL, note: "" },
+  solo: { label: "Reserve My Seat Now ₹1,499", url: CHECKOUT_URL, note: "Solo Pass · 1 seat · ₹1,499" },
   partner: { label: "Reserve Our 2 Seats ₹1,999", url: CHECKOUT_URL_PARTNER, note: "Partner Pass · 2 seats · ₹1,999" },
 };
 let currentPass = "solo";
