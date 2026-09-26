@@ -1,4 +1,4 @@
-import { VSL_URL, CHECKOUT_URL, THANK_YOU_PATH } from "./config.js";
+import { VSL_URL, CHECKOUT_URL, CHECKOUT_URL_PARTNER, THANK_YOU_PATH } from "./config.js";
 
 const videoButton = document.querySelector("[data-video]");
 const modal = document.querySelector(".modal");
@@ -12,9 +12,14 @@ const leadForm = document.querySelector("[data-lead-form]");
 const leadCloseButton = document.querySelector("[data-lead-close]");
 const leadSubmitButton = document.querySelector("[data-lead-submit]");
 const leadError = document.querySelector("[data-lead-error]");
+const leadPassNote = document.querySelector("[data-lead-pass]");
 const leadTriggers = document.querySelectorAll("[data-lead-trigger]");
 
-const SUBMIT_LABEL = "Reserve My Seat Now ₹1,499";
+const PASSES = {
+  solo: { label: "Reserve My Seat Now ₹1,499", url: CHECKOUT_URL, note: "" },
+  partner: { label: "Reserve Our 2 Seats ₹1,999", url: CHECKOUT_URL_PARTNER, note: "Partner Pass · 2 seats · ₹1,999" },
+};
+let currentPass = "solo";
 const isFile = (url) => /\.(mp4|webm|mov)(\?|$)/i.test(url);
 
 function closeModal() {
@@ -96,7 +101,7 @@ function getUtmParams() {
 function setLeadFormState(isSubmitting) {
   if (!leadSubmitButton) return;
   leadSubmitButton.disabled = isSubmitting;
-  leadSubmitButton.textContent = isSubmitting ? "Please wait..." : SUBMIT_LABEL;
+  leadSubmitButton.textContent = isSubmitting ? "Please wait..." : PASSES[currentPass].label;
 }
 
 function showLeadError(message) {
@@ -111,8 +116,14 @@ function clearLeadError() {
   leadError.hidden = true;
 }
 
-function openLeadModal() {
+function openLeadModal(pass = "solo") {
   if (!leadModal) return;
+  currentPass = PASSES[pass] ? pass : "solo";
+  setLeadFormState(false);
+  if (leadPassNote) {
+    leadPassNote.textContent = PASSES[currentPass].note;
+    leadPassNote.hidden = !PASSES[currentPass].note;
+  }
   clearLeadError();
   leadModal.hidden = false;
   document.body.classList.add("modal-open");
@@ -132,7 +143,7 @@ function normalizePhone(value) {
 leadTriggers.forEach((trigger) => {
   trigger.addEventListener("click", (event) => {
     event.preventDefault();
-    openLeadModal();
+    openLeadModal(trigger.dataset.pass);
   });
 });
 
@@ -170,18 +181,19 @@ if (leadModal && leadForm && leadCloseButton) {
       return;
     }
 
-    if (!CHECKOUT_URL) {
+    if (!PASSES[currentPass].url) {
       showLeadError("Registration isn't open just yet — please check back shortly.");
       return;
     }
 
     setLeadFormState(true);
 
-    const target = new URL(CHECKOUT_URL, window.location.href);
+    const target = new URL(PASSES[currentPass].url, window.location.href);
     target.searchParams.set("name", name);
     target.searchParams.set("email", email);
     target.searchParams.set("whatsapp", whatsapp);
     target.searchParams.set("challenge", challenge);
+    target.searchParams.set("pass", currentPass);
     const utm = getUtmParams();
     Object.keys(utm).forEach((key) => target.searchParams.set(key, utm[key]));
     window.location.href = target.href;
