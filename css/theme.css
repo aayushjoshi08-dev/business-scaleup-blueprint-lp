@@ -258,12 +258,8 @@ a.cta-dark small img,a.cta-block small img,a.btn small img{display:inline-block 
 }
 .wc-rating .wc-exc{display:block;text-align:center;font-size:12.5px;}
 
-/* presenter (award photo is landscape, so it is shown as a rounded rectangle rather than a circle) */
-.wc-banner .wc-coach-img.presenter-photo{width:210px !important;height:140px !important;border-radius:14px !important;border:1px solid var(--epx-line) !important;object-fit:cover;object-position:center;align-self:center;}
+/* trainer credentials line in the workshop card */
 .wc-cred{font-size:12.5px !important;line-height:1.5;color:var(--epx-muted) !important;margin-top:4px;max-width:340px;}
-@media(max-width:640px){
-  .wc-banner .wc-coach-img.presenter-photo{width:100% !important;height:auto !important;aspect-ratio:3/2;margin:14px 0 0 0 !important;}
-}
 .footer-logo{display:block;width:150px;max-width:60%;height:auto;margin:0 auto 14px;}
 
 /* VSL is a square (1:1) video: square card in the hero, contained player in the modal */
