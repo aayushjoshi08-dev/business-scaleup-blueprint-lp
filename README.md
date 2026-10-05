@@ -20,3 +20,4 @@ Light navy layout, built from BSB's own verified content and assets (nothing is 
 - CTAs scroll to the pass cards; each pass's **Book Now** opens the form pre-selected, then redirects to that pass's payment link.
 - Payment links, the optional pre-payment lead webhook (`LEAD_WEBHOOK_URL`) and the WhatsApp/details settings are all in `script/config.js` (shared). After editing it, bump the `?v=` on the config import in `bsb-2026/js/main.js`.
 - Case studies show outcomes only (no growth numbers). Videos open as a YouTube popup.
+- **Premium theme:** `bsb-2026/premium.html` is the same page in an ivory / deep-indigo / champagne-gold palette with Playfair Display + Manrope type (`css/premium.css`, images `logo-ink.png`, `coach-*-premium.*`). It shares `js/main.js`, all assets and the go-live config with `index.html`. The classic navy version stays at `bsb-2026/`.
