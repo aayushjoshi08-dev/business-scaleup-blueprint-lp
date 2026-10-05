@@ -24,3 +24,8 @@ export const WHATSAPP_COMMUNITY_URL = "";
 // It receives a JSON POST: fullName, phoneNumber, natureOfBusiness, annualRevenue, teamSize,
 // challenge1, goal1, plus any utm_* parameters. Leave empty and the details are NOT stored anywhere.
 export const DETAILS_WEBHOOK_URL = "";
+
+// bsb-2026 page only: where the pre-payment "Reserve your seat" form (name, email, phone, industry, turnover, pass)
+// is sent as a JSON POST before the visitor is redirected to checkout — keeps leads even if payment is abandoned.
+// A GHL / Zapier / n8n / Google Sheets webhook URL. Leave empty to skip.
+export const LEAD_WEBHOOK_URL = "";
