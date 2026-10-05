@@ -7,6 +7,7 @@ Outputs (these are what GitHub Pages serves — do not edit by hand):
   index.html    classic navy theme      (css = src/style.css)
   premium.html  premium ivory/gold      (css = src/premium.css)
   js/main.js    minified script
+  thank-you-premium.html + js/thankyou.js   post-payment page (src/thank-you.html, src/ty-premium.css, src/thankyou.js)
 
 What the build does for speed:
   * minifies the CSS and inlines it in <head> (no render-blocking stylesheet request)
@@ -124,5 +125,30 @@ def main():
         write(P(t["out"]), html)
         print(f'{t["out"]:13} {len(html)/1024:5.1f} KB  (css inlined: {len(css)/1024:4.1f} KB)')
 
+def build_thankyou():
+    """Premium thank-you page: details form -> WhatsApp community, plus Save The Date."""
+    js = esbuild(read(P("src", "thankyou.js")), "js")
+    write(P("js", "thankyou.js"), js)
+    jsv = hashlib.md5(js.encode()).hexdigest()[:8]
+    config_url = re.search(r'from "((?:\.\./)+script/config\.js\?v=[^"]+)"', read(P("src", "thankyou.js"))).group(1)
+    config_href = config_url[3:]
+    css = esbuild(read(P("src", "ty-premium.css")), "css")
+    fonts = ["playfair-var.woff2", "playfair-italic-var.woff2", "manrope-var.woff2"]
+    head = '<meta name="theme-color" content="#15112F">'
+    head += "".join(f'<link rel="preload" href="fonts/{f}" as="font" type="font/woff2" crossorigin>' for f in fonts)
+    head += f'<link rel="modulepreload" href="js/thankyou.js?v={jsv}"><link rel="modulepreload" href="{config_href}">'
+    head += "<style>" + css + "</style>"
+    html = read(P("src", "thank-you.html"))
+    assert "<!--BUILD:HEAD-->" in html
+    html = html.replace("<!--BUILD:HEAD-->", head)
+    html = re.sub(r"js/thankyou\.js\?v=\w+\"></script>", f'js/thankyou.js?v={jsv}"></script>', html)
+    html = add_img_attrs(html, "")
+    html = min_html(html)
+    write(P("thank-you-premium.html"), html)
+    print(f"js/thankyou.js {len(js)/1024:4.1f} KB  (v={jsv})")
+    print(f"thank-you-premium.html {len(html)/1024:5.1f} KB  (css inlined: {len(css)/1024:4.1f} KB)")
+
+
 if __name__ == "__main__":
     main()
+    build_thankyou()
