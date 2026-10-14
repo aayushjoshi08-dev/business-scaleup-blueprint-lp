@@ -9,7 +9,8 @@ export const VSL_URL = "assets/vsl.mp4";
 // Leave empty until the payment link is ready.
 export const CHECKOUT_URL = "";
 
-// Payment link for the Partner Pass (2 seats, ₹1,999). Same query parameters as above, plus pass=partner.
+// Payment link for the Partner Pass (2 seats, ₹1,999). Only the older short LP (index.html at the site root) still uses this;
+// the /bsb-2026/ pages have a single ₹1,499 seat and read CHECKOUT_URL only. Same query parameters as above, plus pass=partner.
 // Leave empty until that payment link is ready — the Partner Pass form then shows "not open yet".
 export const CHECKOUT_URL_PARTNER = "";
 

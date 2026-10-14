@@ -366,3 +366,25 @@ body.no-scroll .m-bar{display:none !important}
   .disclaimer{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
 }
 @media(prefers-reduced-motion:reduce){.m-bar,.m-bar.show{transition:none}}
+
+/* ---------- ET Article B changes: single seat, guarantee, policy ---------- */
+.g-note{max-width:520px;margin:14px auto 0;font-size:13.5px;line-height:1.55;color:#444;text-align:center}
+.g-note b{color:var(--navy)}
+.hero-cta-d .g-note{margin-top:16px}
+.seats-line{margin:22px auto 0;max-width:560px;font-size:17px}
+.pass-cards{grid-template-columns:minmax(0,460px)}
+.price-blocks{grid-template-columns:minmax(0,460px)}
+.g-list{list-style:none;margin:0;padding:0 16px;display:grid;gap:11px}
+.g-list li{position:relative;padding-left:26px;font-size:14.5px;line-height:1.5}
+.g-list li::before{content:"✓";position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:var(--navy);color:#fff;font-size:11px;font-weight:900;display:grid;place-items:center;margin-top:2px}
+.g-list b{color:var(--navy)}
+.pblock .g-note{margin-top:16px}
+.seat-pill{display:inline-block;margin:0 0 12px;padding:6px 14px;border-radius:999px;background:var(--tint);border:1px solid #C9D2F2;color:var(--navy);font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.dialog .g-note{margin-top:4px;font-size:12.5px}
+.featured{display:inline-block;margin:-6px 0 14px;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.policy{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.22);text-align:left;font-size:14px;line-height:1.6;color:rgba(255,255,255,.88)}
+.policy h2{font-size:16px;color:#fff;text-transform:uppercase;letter-spacing:.06em;margin:0 0 8px}
+.policy ul{margin:0;padding-left:18px}
+.policy .biz{margin:12px 0 0;display:grid;gap:3px}
+.policy .biz a{color:#fff}
+.policy b{color:#fff}

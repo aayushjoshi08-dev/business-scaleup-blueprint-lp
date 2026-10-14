@@ -1,0 +1,9 @@
+{
+  "_help": "Footer business details. Leave a value empty and that line is simply not shown. Fill it in, run build.py, and it appears on every page. Needed per the ET Article B change list: legal business name, office address, WhatsApp/phone (the SAME number as in the printed article box), GST number, Terms and Privacy page links.",
+  "legal_name": "",
+  "address": "",
+  "phone": "",
+  "gst": "",
+  "terms_url": "",
+  "privacy_url": ""
+}

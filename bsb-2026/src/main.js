@@ -2,7 +2,7 @@
 // Go-live values (payment links, webhook) live in script/config.js (site root) — shared with the other BSB pages.
 import * as config from "../../script/config.js?v=5";
 
-const { CHECKOUT_URL = "", CHECKOUT_URL_PARTNER = "", LEAD_WEBHOOK_URL = "" } = config;
+const { CHECKOUT_URL = "", LEAD_WEBHOOK_URL = "" } = config;
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -54,33 +54,6 @@ $$("[data-carousel]").forEach((carousel) => {
   sync();
 });
 
-/* ---------- count-up stats ---------- */
-const counters = $$("[data-count]");
-const fmt = (el, value) => {
-  el.textContent = (el.dataset.prefix || "") + Math.round(value).toLocaleString("en-US") + (el.dataset.suffix || "");
-};
-const finalize = (el) => fmt(el, Number(el.dataset.count));
-if (!("IntersectionObserver" in window) || reduceMotion) {
-  counters.forEach(finalize);
-} else {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      io.unobserve(entry.target);
-      const el = entry.target;
-      const target = Number(el.dataset.count);
-      const start = performance.now();
-      const run = (now) => {
-        const p = Math.min(1, (now - start) / 1400);
-        fmt(el, target * (1 - Math.pow(1 - p, 3)));
-        if (p < 1) requestAnimationFrame(run);
-      };
-      requestAnimationFrame(run);
-    });
-  }, { threshold: 0.4 });
-  counters.forEach((el) => { fmt(el, 0); io.observe(el); });
-}
-
 /* ---------- modals ---------- */
 let lastFocus = null;
 function openModal(modal) {
@@ -129,27 +102,15 @@ $$("[data-yt]").forEach((btn) => {
   });
 });
 
-/* ---------- lead form (opens from a pass card; CTAs elsewhere scroll to the passes) ---------- */
-const PASSES = {
-  solo: { label: "Solo Pass · 1 seat · ₹1,499", url: CHECKOUT_URL },
-  partner: { label: "Partner Pass · 2 seats · ₹1,999", url: CHECKOUT_URL_PARTNER },
-};
+/* ---------- booking form (opens only on a button tap; every other CTA scrolls to the price box) ---------- */
 const leadModal = $("#lead-modal");
 const form = $("#lead-form");
 const err = $("#lead-err");
 const submit = $("#lead-submit");
-const passNote = $("#lead-pass");
 const SUBMIT_LABEL = submit.textContent;
 
-function syncPassNote() {
-  passNote.textContent = (PASSES[form.elements.pass.value] || PASSES.solo).label;
-}
-form.elements.pass.addEventListener("change", syncPassNote);
-
-$$("[data-pass]").forEach((btn) => {
+$$("[data-book]").forEach((btn) => {
   btn.addEventListener("click", () => {
-    form.elements.pass.value = PASSES[btn.dataset.pass] ? btn.dataset.pass : "solo";
-    syncPassNote();
     err.hidden = true;
     submit.disabled = false;
     submit.textContent = SUBMIT_LABEL;
@@ -159,6 +120,7 @@ $$("[data-pass]").forEach((btn) => {
 });
 
 const UTM_KEY = "bsb2026_utm";
+const DEFAULT_UTM = Object.fromEntries(new URLSearchParams(document.body.dataset.utmDefault || ""));   // e.g. the ET page tags its own traffic
 function utmFromUrl() {
   const utm = {};
   for (const [k, v] of new URLSearchParams(location.search)) if (k.toLowerCase().startsWith("utm_")) utm[k] = v;
@@ -171,7 +133,7 @@ function utm() {
     const saved = JSON.parse(localStorage.getItem(UTM_KEY) || "null");
     if (saved && Date.now() - saved.at < 30 * 864e5) return saved.utm || {};
   } catch (e) { /* storage unavailable */ }
-  return fromUrl;
+  return DEFAULT_UTM;
 }
 utm();
 
@@ -182,26 +144,20 @@ form.addEventListener("submit", async (event) => {
   err.hidden = true;
   const data = Object.fromEntries(new FormData(form).entries());
   const name = String(data.name || "").trim();
-  const email = String(data.email || "").trim().toLowerCase();
+  const email = String(data.email || "").trim().toLowerCase();   // optional
   const whatsapp = String(data.whatsapp || "").replace(/[^\d+]/g, "");
 
-  if (!name || !email || !whatsapp || !data.industry || !data.turnover) {
-    showErr("Please complete every field before reserving your seat.");
-    return;
-  }
-  if (!/^\S+@\S+\.\S+$/.test(email)) { showErr("Please enter a valid email address."); return; }
-  if (whatsapp.replace(/\D/g, "").length < 10) { showErr("Please enter a valid phone number."); return; }
-
-  const pass = PASSES[data.pass] ? data.pass : "solo";
-  const checkout = PASSES[pass].url;
-  if (!checkout) { showErr("Registration isn't open just yet — please check back shortly."); return; }
+  if (!name || !whatsapp) { showErr("Please enter your name and WhatsApp number."); return; }
+  if (whatsapp.replace(/\D/g, "").length < 10) { showErr("Please enter a valid WhatsApp number."); return; }
+  if (email && !/^\S+@\S+\.\S+$/.test(email)) { showErr("That email doesn’t look right — fix it, or leave it blank."); return; }
+  if (!CHECKOUT_URL) { showErr("Registration isn't open just yet — please check back shortly."); return; }
 
   submit.disabled = true;
   submit.textContent = "Please wait...";
 
   // Optional: keep every lead (even if payment is abandoned) — GHL / Zapier / n8n / Sheets webhook.
   if (LEAD_WEBHOOK_URL) {
-    const payload = { name, email, whatsapp, industry: data.industry, turnover: data.turnover, pass, page: location.href, submittedAt: new Date().toISOString(), ...utm() };
+    const payload = { name, email, whatsapp, page: location.href, submittedAt: new Date().toISOString(), ...utm() };
     try {
       await Promise.race([
         fetch(LEAD_WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), keepalive: true }),
@@ -210,8 +166,8 @@ form.addEventListener("submit", async (event) => {
     } catch (e) { /* never block the visitor from paying */ }
   }
 
-  const target = new URL(checkout, location.href);
-  Object.entries({ name, email, whatsapp, industry: data.industry, turnover: data.turnover, pass }).forEach(([k, v]) => target.searchParams.set(k, v));
+  const target = new URL(CHECKOUT_URL, location.href);
+  Object.entries({ name, email, whatsapp }).forEach(([k, v]) => v && target.searchParams.set(k, v));
   Object.entries(utm()).forEach(([k, v]) => target.searchParams.set(k, v));
   location.href = target.href;
 });
@@ -224,10 +180,10 @@ if (bar && "IntersectionObserver" in window) {
     const on = !watch.hero && !watch.passes && !watch.foot && !watch.disc;
     bar.classList.toggle("show", on);
     bar.setAttribute("aria-hidden", String(!on));
-    $("a", bar).tabIndex = on ? 0 : -1;
+    $("a,button", bar).tabIndex = on ? 0 : -1;
   };
   const observe = (el, key) => el && new IntersectionObserver(([entry]) => { watch[key] = entry.isIntersecting; apply(); }).observe(el);
-  observe($(".hero-cta-m .btn") || $(".hero .btn"), "hero");
+  observe($(".hero-cta-m .btn") || $(".et-cta") || $(".hero .btn"), "hero");
   observe($("#passes"), "passes");
   observe($("footer"), "foot");
   observe($(".disclaimer"), "disc");
