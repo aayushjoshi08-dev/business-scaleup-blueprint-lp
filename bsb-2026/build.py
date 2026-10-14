@@ -71,7 +71,7 @@ def add_img_attrs(html, lcp_src):
     return re.sub(r"<img\b[^>]*>", fix, html)
 
 # ----------------------------------------------------------------------------------------------
-ARTICLE_TITLE = "Building self-reliant teams"      # page title = the printed article headline (ET Panache)
+ARTICLE_TITLE = "Building self-reliant teams"      # ET page title only = the printed article headline (ET Panache)
 TITLE_MAIN = "<title>Business Scale-Up Blueprint — Mumbai, 1 Nov 2026</title>"
 H1_MAIN = '<h1>Scale Your Business<br><span class="blue">Without Working Everything Yourself</span></h1>'
 H1_PREMIUM = ('<h1>Building <span class="nb">Self-Reliant</span> Teams</h1>\n        '
@@ -113,7 +113,7 @@ THEMES = {
     "premium": dict(
         out="premium.html", css="premium.css", fonts=PREMIUM_FONTS,
         lcp="assets/coach-circle-premium.webp", theme_color="#15112F",
-        renames=[(H1_MAIN, H1_PREMIUM), (TITLE_MAIN, f"<title>{ARTICLE_TITLE}</title>"), ("assets/logo-light.webp", "assets/logo-ink.webp"),
+        renames=[(H1_MAIN, H1_PREMIUM), ("assets/logo-light.webp", "assets/logo-ink.webp"),
                  ("assets/coach-circle.webp", "assets/coach-circle-premium.webp")] + PREMIUM_COMMON,
     ),
     "et": dict(
