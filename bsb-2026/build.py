@@ -80,6 +80,9 @@ THEMES = {
         fonts=["playfair-var.woff2", "playfair-italic-var.woff2", "manrope-var.woff2"],
         lcp="assets/coach-circle-premium.webp", theme_color="#15112F",
         renames=[
+            # hero headline as printed in the ET Panache feature (premium page only; the classic page keeps the original)
+            ('<h1>Scale Your Business<br><span class="blue">Without Working Everything Yourself</span></h1>',
+             '<h1>Building <span class="nb">Self-Reliant</span> Teams</h1>\n        <p class="hero-deck">Teams follow up on their own when ownership is clear, says business coach Ameet Parekh</p>'),
             ("assets/logo-light.webp", "assets/logo-ink.webp"),
             ("assets/coach-circle.webp", "assets/coach-circle-premium.webp"),
             ("assets/coach-portrait.webp", "assets/coach-portrait-premium.webp"),

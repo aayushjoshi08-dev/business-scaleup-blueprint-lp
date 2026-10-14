@@ -72,6 +72,8 @@ h1,h2,.cta-label,.italic{text-wrap:balance}
 .hero-title{text-align:center}
 .hero h1 .blue{display:block;text-wrap:balance}
 .hero h1{font-size:46px;line-height:1.12;font-weight:800;color:var(--ink)}
+.hero-deck{max-width:640px;margin:14px auto 0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:23px;line-height:1.38;color:var(--gold-d);text-wrap:balance}
+.nb{white-space:nowrap}
 .hero-sub{font-size:15px;margin-top:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--muted)}
 .hero-sub .blue{font-style:normal;color:var(--gold-d)}
 .hero-tag{justify-self:end;display:flex;align-items:center;gap:12px;background:linear-gradient(160deg,#241C5A,var(--ink));color:#fff;border-radius:var(--radius);padding:11px 18px;border:1px solid rgba(200,160,74,.55);box-shadow:0 8px 22px rgba(21,17,47,.25)}
@@ -383,6 +385,7 @@ body.no-scroll .m-bar{display:none !important}
   .hero-logo{width:118px}
   .hero h1{font-size:29px}
   .hero-sub{margin-top:8px}
+  .hero-deck{font-size:18px;margin-top:10px;line-height:1.4}
   .hero-top .hero-tag{display:none}
   .hero-cta-m{display:block;margin-top:18px}
   .hero-cta-m .btn{display:block;width:100%;max-width:340px;margin-inline:auto;font-size:17px;padding:16px 20px}
