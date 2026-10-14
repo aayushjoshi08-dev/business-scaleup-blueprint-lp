@@ -71,6 +71,8 @@ def add_img_attrs(html, lcp_src):
     return re.sub(r"<img\b[^>]*>", fix, html)
 
 # ----------------------------------------------------------------------------------------------
+ARTICLE_TITLE = "Building self-reliant teams"      # page title = the printed article headline (ET Panache)
+TITLE_MAIN = "<title>Business Scale-Up Blueprint — Mumbai, 1 Nov 2026</title>"
 H1_MAIN = '<h1>Scale Your Business<br><span class="blue">Without Working Everything Yourself</span></h1>'
 H1_PREMIUM = ('<h1>Building <span class="nb">Self-Reliant</span> Teams</h1>\n        '
               '<p class="hero-deck">Teams follow up on their own when ownership is clear, says business coach Ameet Parekh</p>')   # headline as printed in the ET Panache feature
@@ -98,9 +100,8 @@ def et_transform(html):
     bar = re.search(r'<div class="m-bar".*?</div>', html, re.S).group(0)
     html = html.replace(bar, '<div class="m-bar et-bar" id="m-bar" aria-hidden="true"><span>₹1,499 · Sun 1 Nov</span><button class="btn" type="button" data-book tabindex="-1">Book my seat</button></div>', 1)
     html = html.replace("<body>", '<body data-utm-default="utm_source=et-panache&amp;utm_medium=print-qr&amp;utm_campaign=bsb-1nov-2026">', 1)
-    title = "<title>Business Scale-Up Blueprint — Mumbai, 1 Nov 2026</title>"
-    assert html.count(title) == 1
-    html = html.replace(title, '<title>Find out what to fix first — Business Scale-Up Blueprint, Mumbai, 1 Nov 2026</title>\n  <meta name="robots" content="noindex, follow">', 1)
+    assert html.count(TITLE_MAIN) == 1
+    html = html.replace(TITLE_MAIN, f'<title>{ARTICLE_TITLE}</title>\n  <meta name="robots" content="noindex, follow">', 1)
     return html
 
 THEMES = {
@@ -112,7 +113,7 @@ THEMES = {
     "premium": dict(
         out="premium.html", css="premium.css", fonts=PREMIUM_FONTS,
         lcp="assets/coach-circle-premium.webp", theme_color="#15112F",
-        renames=[(H1_MAIN, H1_PREMIUM), ("assets/logo-light.webp", "assets/logo-ink.webp"),
+        renames=[(H1_MAIN, H1_PREMIUM), (TITLE_MAIN, f"<title>{ARTICLE_TITLE}</title>"), ("assets/logo-light.webp", "assets/logo-ink.webp"),
                  ("assets/coach-circle.webp", "assets/coach-circle-premium.webp")] + PREMIUM_COMMON,
     ),
     "et": dict(
