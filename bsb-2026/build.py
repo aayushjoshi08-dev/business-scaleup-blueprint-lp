@@ -77,8 +77,8 @@ H1_MAIN = '<h1>Scale Your Business<br><span class="blue">Without Working Everyth
 H1_PREMIUM = ('<h1>Building <span class="nb">Self-Reliant</span> Teams</h1>\n        '
               '<p class="hero-deck">Teams follow up on their own when ownership is clear, says business coach Ameet Parekh</p>')   # headline as printed in the ET Panache feature
 
+PORTRAIT_PREMIUM = ("assets/coach-portrait.webp", "assets/coach-portrait-premium.webp")
 PREMIUM_COMMON = [
-    ("assets/coach-portrait.webp", "assets/coach-portrait-premium.webp"),
     # theme-aware icon details (the default white keeps them unchanged in the classic theme)
     ('<circle cx="12" cy="9.5" r="2.6" fill="#fff"/>', '<circle cx="12" cy="9.5" r="2.6" style="fill:var(--ic-in,#fff)"/>'),
     ('<path d="M3 9.5h18" stroke="#fff" stroke-width="1.6"/>', '<path d="M3 9.5h18" stroke-width="1.6" style="stroke:var(--ic-in,#fff)"/>'),
@@ -99,6 +99,12 @@ def et_transform(html):
     html = html.replace(why, why + '\n    <p class="why-quote">“I have to follow up on every single task myself.”</p>', 1)
     bar = re.search(r'<div class="m-bar".*?</div>', html, re.S).group(0)
     html = html.replace(bar, '<div class="m-bar et-bar" id="m-bar" aria-hidden="true"><span>₹1,499 · Sun 1 Nov</span><button class="btn" type="button" data-book tabindex="-1">Book my seat</button></div>', 1)
+    portrait = '<img class="coach-big" src="assets/coach-portrait.webp" alt="Dr. Ameet Parekh" loading="lazy" width="451" height="492">'
+    assert html.count(portrait) == 1
+    html = html.replace(portrait, '<img class="coach-big" src="assets/coach-et.webp" alt="Dr. Ameet Parekh" loading="lazy" width="640" height="800">', 1)
+    featured = '<p class="featured">As featured in ET Panache</p>\n        '
+    assert html.count(featured) == 1
+    html = html.replace(featured, "", 1)      # the ET page does not carry the "as featured in" line (the other pages do)
     html = html.replace("<body>", '<body data-utm-default="utm_source=et-panache&amp;utm_medium=print-qr&amp;utm_campaign=bsb-1nov-2026">', 1)
     assert html.count(TITLE_MAIN) == 1
     html = html.replace(TITLE_MAIN, f'<title>{ARTICLE_TITLE}</title>\n  <meta name="robots" content="noindex, follow">', 1)
@@ -114,11 +120,11 @@ THEMES = {
         out="premium.html", css="premium.css", fonts=PREMIUM_FONTS,
         lcp="assets/coach-circle-premium.webp", theme_color="#15112F",
         renames=[(H1_MAIN, H1_PREMIUM), ("assets/logo-light.webp", "assets/logo-ink.webp"),
-                 ("assets/coach-circle.webp", "assets/coach-circle-premium.webp")] + PREMIUM_COMMON,
+                 ("assets/coach-circle.webp", "assets/coach-circle-premium.webp"), PORTRAIT_PREMIUM] + PREMIUM_COMMON,
     ),
     "et": dict(
         out="et.html", css="premium.css", fonts=PREMIUM_FONTS,
-        lcp="assets/coach-circle-premium-sm.webp", theme_color="#15112F",
+        lcp="assets/coach-et-circle.webp", theme_color="#15112F",
         pre=et_transform, renames=PREMIUM_COMMON,
     ),
 }
